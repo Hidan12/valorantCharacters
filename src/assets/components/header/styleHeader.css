@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components{
+    .container-header{
+        @apply flex flex-row items-center justify-between w-5/6 p-2 h-56 border-x border-solid border-gray-400
+    }
+}

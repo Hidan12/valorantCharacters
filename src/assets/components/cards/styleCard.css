@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .card-style{
+        @apply  flex flex-col w-52 h-96 border-solid border border-gray-500
+    }
+    .conteiner-img{
+        @apply relative w-full  overflow-hidden bg-gradient-to-b from-purple-400 to-pink-500 group-hover:from-pink-500 group-hover:to-orange-500 
+    }
+    .img-card{
+        @apply  w-full h-80 object-fill 
+    }
+    .conteiner-button{
+        @apply absolute flex flex-col items-center inset-x-0 group-hover:animate-moveup
+    }
+    .btn-yellow{
+        @apply w-full bg-yellow-400 rounded-tl-lg rounded-br-full
+    }
+    .red-dot{
+        @apply absolute right-0.5 top-7 w-2 h-2 bg-red-500 border border-solid border-red-500
+    }
+}
