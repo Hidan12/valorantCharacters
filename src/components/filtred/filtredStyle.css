@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .container-filters{
+        @apply w-5/6 flex justify-between items-center my-8
+    }
+    .button-image{
+        @apply flex justify-around flex-wrap w-2/5
+    }
+    .container-button-rol{
+        @apply  flex flex-col items-center w-14 h-12 bg-gradient-to-b hover:from-pink-500 hover:to-orange-500
+    }
+}

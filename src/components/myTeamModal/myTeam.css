@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .container-my-team{
+        @apply fixed top-16 flex justify-center
+    }
+    .my-team{
+        @apply flex flex-col items-center bg-slate-900 rounded-xl w-full md:w-1/2 h-[80vh]
+    }
+}
