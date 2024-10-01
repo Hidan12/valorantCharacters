@@ -1,6 +1,6 @@
 # Valorant Agents App
 
-![Valorant Logo](https://upload.wikimedia.org/wikipedia/en/0/0c/Valorant_logo_-_pink.svg)
+![Valorant Logo](https://www.vhv.rs/dpng/d/448-4489723_valorant-logo-png-transparent-png.png)
 
 ## Table of Contents
 

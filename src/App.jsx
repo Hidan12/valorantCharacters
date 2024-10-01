@@ -23,6 +23,19 @@ const filterRol = (info)=>{
   return rolFilter
 }
 
+
+const myTeamPersisted = (info)=>{
+  let localMyTeam = JSON.parse(localStorage.getItem('myTeam'))
+  if (localMyTeam && localMyTeam.length > 0) {
+    localMyTeam = info.filter(dataInfo => localMyTeam.some(local => dataInfo.uuid == local ))
+  }else{
+    localMyTeam = []
+  }
+  return localMyTeam
+  
+}
+
+
 function App() {
   const [infoArray, setInfoArray] = useState([])
   const [copyInfo, setCopyInfo] = useState([])
@@ -39,7 +52,9 @@ function App() {
       try {
         let tmpData = await fetch("https://valorant-api.com/v1/agents?isPlarayable=true")
         const data = await tmpData.json()
-        const tmpRol = filterRol(data.data)        
+        const tmpRol = filterRol(data.data)
+        
+        setMyTeam(team => team = myTeamPersisted(data.data))
         setRol((tmprol) => tmprol = tmpRol)
         setInfoArray(tmp => tmp = data.data)
         setCopyInfo(tmp => tmp = data.data)
@@ -60,6 +75,8 @@ function App() {
   const handlerAddMyTeam = (characters)=>{
   if (myTeam.length < 5) {
     setMyTeam(ch => ch = [...ch,characters])
+    let tem = [...myTeam, characters]
+    localStorage.setItem('myTeam', JSON.stringify(tem.map(ch => (ch.uuid) )))
   }else{
     setMaxTeam(tmp => tmp = true)
   }
@@ -67,6 +84,7 @@ function App() {
   const handlerRemoveMyTeam = (character)=>{
     const tmp = myTeam.filter(ch => ch !=character )
     setMyTeam(ch => ch = tmp)
+    localStorage.setItem('myTeam', JSON.stringify(tmp.map(ch => (ch.uuid))))
  }
   //manejador de max team (cambia a falso)
   const handlerMaxTeam =()=>{
