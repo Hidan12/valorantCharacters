@@ -8,10 +8,13 @@
         @apply fixed top-16 flex justify-center
     }
     .container-detail-yellow{
-        @apply flex flex-col items-center bg-yellow-200 rounded-xl w-full md:w-1/2 h-[80vh]
+        @apply flex flex-col items-center bg-slate-900 rounded-xl w-full md:w-1/2 h-[80vh]
     }
     .container-button{
         @apply flex justify-end w-full
+    }
+    .container-button-ability{
+        @apply w-1/5  bg-gradient-to-b hover:from-pink-500 hover:to-orange-500
     }
     .button-red{
         @apply mx-2 text-2xl font-extrabold text-red-500

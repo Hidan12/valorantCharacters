@@ -2,9 +2,9 @@ import { useState } from 'react'
 import './detail.css'
 
 
-const ButtonImage = ({info, handerButton})=>{
+const ButtonImage = ({info, handerButton, abilitie})=>{
     return(
-        <button onClick={()=>handerButton(info)} className='w-1/5'>
+        <button onClick={()=>handerButton(info)} className={`container-button-ability ${abilitie == info ? "from-pink-500 to-orange-500":""}`}>
             <img src={info.displayIcon} className='w-full' alt="" />
         </button>
     )
@@ -14,10 +14,10 @@ const ButtonImage = ({info, handerButton})=>{
 const DetailCard = ({info,  handerDetail, clickDetail}) =>{
 const [abilitie, setAbilitie] = useState(info.abilities[0])
 const handerAbilitie = (abilitie)=>{
-    console.log(abilitie);
-    
     setAbilitie((ab)=> ab = abilitie)
 }
+ const tmpColor = `text-[#${info.backgroundGradientColors[0].substring(0, 6)}]`
+ 
  return(
     <div className="container-detail">
         <div className="container-detail-yellow">
@@ -26,8 +26,8 @@ const handerAbilitie = (abilitie)=>{
                     <button onClick={()=> handerDetail(clickDetail, {}, "modal")} className="button-red">X</button>
                 </div>
             <div className="container-title">
-                <h2 className={`font-bold text-[#${info.backgroundGradientColors[0].substring(0, 6)}]`}>{info.displayName}</h2>
-                <p className="text-red-500">Anime</p>
+                <h2 className={`font-bold text-red-500 `}>{info.displayName}</h2>
+                <p className="text-red-500">{info.role ? info.role.displayName: "Unknown" }</p>
             </div>
             </div>
             <div className="container-img-description"> 
@@ -36,17 +36,17 @@ const handerAbilitie = (abilitie)=>{
                         <img src={info.fullPortrait || info.fullPortraitV2} className="img-detail" alt="" />
                     </div>
                     <div className='w-full h-1/5 '>
-                        {info.abilities.map(abilitie => <ButtonImage key={abilitie.displayName} info={abilitie} handerButton={handerAbilitie}/> )}
+                        {info.abilities.map(abilities => <ButtonImage key={abilities.displayName} abilitie={abilitie} info={abilities} handerButton={handerAbilitie}/> )}
                     </div>
                 </div>
                 <div className='flex flex-col gap-y-2 w-2/5 h-[90%] '>
                     <div className="container-description">
-                        <p className="">{info.description}</p>
+                        <p className="text-red-500">{info.description}</p>
                     </div>
                     <div className='flex flex-col gap-y-2 w-full h-[25%]'>
-                        <h3>ABILITIE: <span className='font-bold'>{abilitie.displayName}</span></h3>
+                        <h3 className='text-red-500'>{abilitie.slot}: <span className='font-bold text-red-500'>{abilitie.displayName}</span></h3>
                         <div className='w-full h-full overflow-y-auto'>
-                            <p>{abilitie.description || "No description"}</p>
+                            <p className='text-red-500'>{abilitie.description || "No description"}</p>
                         </div>
                     </div>
                 </div>

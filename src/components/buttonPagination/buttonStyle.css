@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .container-buttons-pagination{
+        @apply flex justify-between my-5 md:w-2/5
+    }
+    .button-yellow-left{
+        @apply px-6 py-1 bg-slate-900 hover:bg-yellow-500
+    }
+    .container-numbers{
+        @apply flex w-full bg-gradient-to-t from-red-500 to-[#a5a5a5]  justify-center overflow-y-auto
+    }
+    .button-yellow-right{
+        @apply px-6 py-1 bg-gradient-to-t from-red-500 to-[#a5a5a5] rounded-br-full hover:bg-red-700
+    }
+}

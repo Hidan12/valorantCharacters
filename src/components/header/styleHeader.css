@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components{
+    .container-header{
+        @apply flex flex-row items-center justify-center w-full h-10 my-4
+    }
+}
