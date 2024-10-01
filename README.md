@@ -15,7 +15,7 @@
 ## Description
 
 This project is a practical assignment for the Full Stack course at MindHub Academy. The **Valorant Agents App** is a React-based application that displays Valorant agents by consuming the Valorant API. It offers functionalities such as filtering agents by name and role, selecting agents to form a team, viewing detailed information about each agent, and paginating the agent list.
-
+ -[Link to page](https://hidan12.github.io/valorantCharacters/)
 ## Features
 
 1. **Consume Valorant Agents API:**
