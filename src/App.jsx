@@ -34,10 +34,17 @@ const myTeamPersisted = (info)=>{
   return localMyTeam
   
 }
-
+const paginationByWidth = (width)=>{
+  if(width > 768 ){
+    return 6
+  }
+  return 4
+}
 
 function App() {
   const [infoArray, setInfoArray] = useState([])
+  // const [width, setWidth] = useState(window.innerWidth)
+  // const [amountCard, setAmountCard] = useState(paginationByWidth(width))
   const [copyInfo, setCopyInfo] = useState([])
   const [clickMyTeam, setClickMyTeam] = useState(false)
   const [myTeam, setMyTeam] = useState([])
@@ -46,6 +53,9 @@ function App() {
   const [rolSelect, setRolSelect] = useState({}) 
   const [search, setSearch] = useState('')
   
+  // useEffect(()=>{
+  //   setAmountCard(paginationByWidth(window.innerWidth))
+  // },[window.innerWidth])
   
   useEffect(()=>{
    const test = async ()=>{
@@ -94,10 +104,11 @@ function App() {
  //manejador del seteo de rol y filtrado
   const handlerRole = (selectRol)=>{
   if (selectRol != rolSelect) {
-    setRolSelect(rl => rl=selectRol)
+    setRolSelect(rl => rl = selectRol)
     filter(search, selectRol)
   }
   else{
+    console.log("entro al else");
     setRolSelect(rl => rl = {})
     filter(search, {})
   }
@@ -107,7 +118,7 @@ function App() {
   const handerSearchOnChange = (value)=>{
    //haciendo esta funcion dentro del set obliga que el set se ejecute y renderice con el nuevo valor  
    setSearch((vl)=> vl = value)
-   filter(value, rol)
+   filter(value, rolSelect)
  }
 
 
