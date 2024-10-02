@@ -41,7 +41,7 @@ const handerAbilitie = (abilitie)=>{
                     </div>
                 </div>
                 <div className='flex flex-col gap-y-4 w-2/5 h-[90%] '>
-                    <div className="container-description">
+                    <div className="container-description no-scrollbar">
                         <p className="text-red-500">{info.description}</p>
                     </div>
                     <div className='flex flex-col gap-y-1 w-full h-[40%] md:h-[45%]'>
