@@ -9,12 +9,12 @@ const ButtonPagination = ({quantityButtons, handlePagePrev, handlerNumber, handl
         <>
             <div className="container-buttons-pagination">
                 <div className='flex items-center'>
-                    <button className="button-yellow-left text-red-500" onClick={()=>handlePagePrev()}>prev</button>
+                    <button className="button-gradient-left text-red-500" onClick={()=>handlePagePrev()}>prev</button>
                 </div>
                 <div className='container-numbers'>
-                    {buttons.map((_, index) => (<button className={`p-4 ${page == index ? "bg-yellow-500": "" } hover:bg-yellow-500`} key={index} onClick={()=> handlerNumber(index)} >{index + 1}</button>))}
+                    {buttons.map((_, index) => (<button className={`p-4 bg-gradient-to-t ${page == index ? "from-red-700 to-[#a5a5a5]": "" } hover:from-red-600 hover:to-[#a5a5a5]`} key={index} onClick={()=> handlerNumber(index)} >{index + 1}</button>))}
                 </div>
-                <button className="button-yellow-right" onClick={()=>handlePageNext()}>next</button>
+                <button className="button-gradient-right" onClick={()=>handlePageNext()}>next</button>
             </div>
         </>
     )

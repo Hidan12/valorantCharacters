@@ -3,12 +3,18 @@
 @tailwind utilities;
 
 
+@layer utilities{
+    .no-scrollbar::-webkit-scrollbar {
+        width: 2px;
+      }
+}
+
 @layer components{
     .container-detail{
-        @apply fixed top-16 flex justify-center
+        @apply fixed top-0 md:top-16 flex justify-center
     }
     .container-detail-yellow{
-        @apply flex flex-col items-center bg-slate-900 rounded-xl w-full md:w-1/2 h-[80vh]
+        @apply flex flex-col items-center bg-slate-900 rounded-xl w-full md:w-1/2 h-[100vh] md:h-[80vh]
     }
     .container-button{
         @apply flex justify-end w-full
@@ -29,6 +35,6 @@
         @apply object-contain w-full h-full
     }
     .container-description{
-        @apply w-full h-[70%] overflow-y-auto
+        @apply w-full h-[40%] md:h-[45%] overflow-y-auto
     }
 }
