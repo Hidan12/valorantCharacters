@@ -27,13 +27,13 @@ const Card = ({infoCard, handerDetail, clickDetail, handlerAddMyTeam, handlerRem
             
             { button ? 
               <button onClick={()=>handlerRemoveMyTeam(infoCard)} className='flex w-full items-center overflow-x-hidden'>
-              <div className='bottom-add-remove'>
+              <div className='bottom-add-remove md:group-hover:animate-moveright'>
                 <p className='font-bold text-sm'>Remove to team</p>
               </div>
             </button>
             :
             <button onClick={()=>handlerAddMyTeam(infoCard)} className='flex w-full items-center overflow-x-hidden'>
-            <div className=' bottom-add-remove'>
+            <div className=' bottom-add-remove md:group-hover:animate-moveright'>
               <p className='font-bold'>Add to team</p>
             </div>
           </button>  

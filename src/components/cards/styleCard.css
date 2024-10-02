@@ -16,7 +16,7 @@
         @apply absolute flex flex-col items-center inset-x-0 group-hover:animate-moveup
     }
     .bottom-add-remove{
-        @apply w-4/5 bg-gradient-to-t from-red-500 to-[#a5a5a5] rounded-br-full md:relative md:left-[-80%] md:group-hover:animate-moveright
+        @apply w-4/5 bg-gradient-to-t from-red-500 to-[#a5a5a5] rounded-br-full md:relative md:left-[-80%] 
     }
     .btn-yellow{
         @apply w-full bg-yellow-400 rounded-tl-lg rounded-br-full
