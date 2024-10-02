@@ -2,11 +2,11 @@ import './myTeam.css'
 
 const CharacterTeam = ({character, handlerRemoveMyTeam})=>{
     return(
-        <div className='flex justify-between items-center'>
-            <img src={character.displayIconSmall} className='w-7 h-7 object-cover ms-4'  alt="" />
+        <div className='grid grid-cols-4 justify-items-center items-center'>
+            <img src={character.displayIconSmall} className='w-8 h-7 object-cover'  alt="" />
             <h2 className='text-red-500 font-bold'>{character.displayName}</h2>
             <p className='text-red-500 font-bold'>{character.role ? character.role.displayName: "Unknown"}</p>
-            <button onClick={()=> handlerRemoveMyTeam(character)} className='bg-red-500 m-5 p-2'>
+            <button onClick={()=> handlerRemoveMyTeam(character)} className='bg-red-500 m-3 p-2'>
                 Remove
             </button>
         </div>
@@ -27,15 +27,17 @@ const MyTeamModal = ({handlerCLickMyTeam, myTeam, handlerRemoveMyTeam})=>{
                     </div>
                 </div>
                 <div className='w-full'>
-                    <div className='flex justify-between my-3'>
+                    <div className='grid grid-cols-4 justify-items-center my-3'>
                         <p className='font-bold text-red-500'>Photo</p>
                         <p className='font-bold text-red-500'>Name</p>
                         <p className='font-bold text-red-500'>Role</p>
                         <p className='font-bold text-red-500'>remove Team</p>
                     </div>
-                    {myTeam.length > 0 ? myTeam.map((team, index) => (<CharacterTeam key={index} character={team} handlerRemoveMyTeam={handlerRemoveMyTeam}/>)) : 
-                    <p className='font-bold text-red-500 text-center text-2xl'>There are no saved characters</p>
-                    }
+                    <div className='overflow-y-auto h-[45vh] md:h-[70vh]'>
+                        {myTeam.length > 0 ? myTeam.map((team, index) => (<CharacterTeam key={index} character={team} handlerRemoveMyTeam={handlerRemoveMyTeam}/>)) : 
+                        <p className='font-bold text-red-500 text-center text-2xl'>There are no saved characters</p>
+                        }
+                    </div>
                 </div>
             </div>
 
