@@ -4,6 +4,6 @@
 
 @layer components{
     .container-main{
-        @apply flex flex-col items-center
+        @apply flex flex-col items-center bg-[url('https://64.media.tumblr.com/6de9529af5332dd9315311da7ab4d4c0/6fca3f73f0c9dbaa-29/s540x810/e95e8df1e7a91f6da4823ebc0ca4575e255f6b8a.gif')] bg-no-repeat bg-fixed bg-cover bg-center
     }
 }

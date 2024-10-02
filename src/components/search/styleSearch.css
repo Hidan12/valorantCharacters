@@ -6,7 +6,7 @@
         @apply flex flex-row w-2/4 h-8 gap-1 justify-end
     }
     .input-search{
-        @apply w-3/5 border-solid border-2 border-gray-500
+        @apply w-3/5 border-solid border-2 border-red-500 rounded-lg focus:border-red-700 focus:outline-none
     }
     .button-search{
         @apply h-8 p-2 border-solid border-2 border-red-600 shadow-[5px_4px_0px_-2px_rgba(0,0,0,0.75)]

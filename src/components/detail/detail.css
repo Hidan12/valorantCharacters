@@ -11,10 +11,10 @@
 
 @layer components{
     .container-detail{
-        @apply fixed top-0 md:top-16 flex justify-center
+        @apply fixed top-10 md:top-16 flex justify-center
     }
     .container-detail-yellow{
-        @apply flex flex-col items-center bg-slate-900 rounded-xl w-full md:w-1/2 h-[100vh] md:h-[80vh]
+        @apply flex flex-col items-center bg-slate-900 rounded-xl w-full md:w-1/2 h-[85vh] md:h-[80vh]
     }
     .container-button{
         @apply flex justify-end w-full

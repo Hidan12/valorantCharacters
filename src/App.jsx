@@ -124,9 +124,9 @@ function App() {
   
   
   return (
-    <div className='container-main bg-black'>
+    <div className='container-main '>
       <HeaderNav handlerCLickMyTeam={handlerCLickMyTeam}/>
-      <h1 className='font-bold text-red-500 text-center'>Filter characters by:</h1>
+      <h1 className='font-bold text-2xl text-red-500 text-center'>Filter characters by:</h1>
       <Filtred infoButton={rol} handlerRole={handlerRole} handerSearchOnChange={handerSearchOnChange} rolSelect={rolSelect}/>      
       {infoArray.length == 0 ? <Loading cardAmount={6}/> : <ContainerCard cardAmount={6} infoArray={copyInfo} handlerAddMyTeam={handlerAddMyTeam} 
         handlerRemoveMyTeam={handlerRemoveMyTeam} handlerMaxTeam={handlerMaxTeam} maxTeam={maxTeam} myTeam={myTeam}/>}
