@@ -108,7 +108,6 @@ function App() {
     filter(search, selectRol)
   }
   else{
-    console.log("entro al else");
     setRolSelect(rl => rl = {})
     filter(search, {})
   }
