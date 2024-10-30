@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Card } from "../cards/Card";
 import { DetailCard } from "../detail/Detail";
 import { ButtonPagination } from "../buttonPagination/ButtonPagination";
+import { PaginationAndDetailState, PaginationAndDetailDispatch } from "../../context/PaginationContext";
 import './styleContainer.css'
+import { useSelector } from "react-redux";
 
 const pagination = (infoArray, cardXpag)=>{
     let tmpArray = []
@@ -18,10 +20,25 @@ const pagination = (infoArray, cardXpag)=>{
     return tmpArray
 }
 
+const filter = (search, rolSelect, character)=>{
+    let temp = []
+    if (rolSelect.displayName) {
+      temp = character.filter((info) => info.displayName.toLowerCase().includes(search.toLowerCase()) && info.role && info.role.displayName == rolSelect.displayName)
+    }else{
+      temp = character.filter((info) => info.displayName.toLowerCase().includes(search.toLowerCase()))
+    }
+    return temp
+  }
 
-const ContainerCard = ({cardAmount, infoArray, handlerAddMyTeam, handlerRemoveMyTeam, handlerMaxTeam, maxTeam, myTeam})=> {
+const ContainerCard = ({cardAmount})=> {
+    //info de redux
+    const {characters, searchCharacters, roleSelect} = useSelector(state => state.charactersStore)
+    //info context
+    // const {pages, currentPages, currentPageArray,} = useContext(PaginationAndDetailState)
+    // const dispatch = useContext(PaginationAndDetailDispatch)
+
     const [page, setPage] = useState(0)
-    const [copyInfo, setCopyInfo] = useState(pagination(infoArray, cardAmount))    
+    const [copyInfo, setCopyInfo] = useState(pagination(characters, cardAmount))    
     const [cards, setCards] = useState(copyInfo[0])
     const [sizeArray, setSizeArray]= useState(copyInfo.length)
     const [clickDetail, setClickDetail] = useState(false)
@@ -59,11 +76,13 @@ const ContainerCard = ({cardAmount, infoArray, handlerAddMyTeam, handlerRemoveMy
 
     useEffect(()=>{
         setPage(page => page = 0)
-        const tmp = pagination(infoArray, cardAmount)
+        
+        const characterFilter = filter(searchCharacters, roleSelect, characters)
+        const tmp = pagination(characterFilter, cardAmount)
         setSizeArray(size => size = tmp.length)
         setCopyInfo((copy) => copy = tmp)
         setCards(card => card = tmp[0])
-    },[infoArray])
+    },[roleSelect, searchCharacters])
 
     
     if (sizeArray > 0) {
@@ -72,9 +91,7 @@ const ContainerCard = ({cardAmount, infoArray, handlerAddMyTeam, handlerRemoveMy
                 <h2 className='font-bold text-xl text-red-500 py-6'>Characters</h2>
                 <div className='container-card'>
                     {cards.map((info) => 
-                    <Card key={info.uuid} infoCard={info} handerDetail={handerDetail} clickDetail={clickDetail} 
-                        handlerAddMyTeam={handlerAddMyTeam} handlerRemoveMyTeam={handlerRemoveMyTeam} 
-                        handlerMaxTeam={handlerMaxTeam} maxTeam={maxTeam} myTeam={myTeam}/> )}
+                    <Card key={info.uuid} infoCard={info} handerDetail={handerDetail} clickDetail={clickDetail} /> )}
                 </div>
                 <ButtonPagination quantityButtons={sizeArray} handlePagePrev={handlePagePrev} 
                     handlerNumber={handlerNumber} handlePageNext={handlePageNext} page={page}/>

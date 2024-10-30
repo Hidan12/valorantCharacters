@@ -1,11 +1,15 @@
-import { SearchNav } from "../search/Search";
+import { useDispatch, useSelector } from "react-redux";
+import { SearchNav } from "../search/Search"
+import { selectRole } from "../../store/actions/characterActions";
 import './filtredStyle.css'
 
-const ButtonImage = ({arrayButton, handlerRole, rolSelect})=>{
+const ButtonImage = ()=>{
+    const {roleCharacters, roleSelect} = useSelector(state => state.charactersStore)
+    const dispatch = useDispatch()
     return(
         <div className="button-image">
-            {arrayButton.map(rol => (
-                <button key={rol.displayName} onClick={()=>{handlerRole(rol)}} className={`container-button-rol ${rolSelect == rol ?"from-pink-500 to-orange-500" : ""}`}>
+            {roleCharacters.map(rol => (
+                <button key={rol.displayName} onClick={()=>{dispatch(selectRole(rol))}} className={`container-button-rol ${roleSelect == rol ?"from-pink-500 to-orange-500" : ""}`}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-full h-full " viewBox="0 0 100 100">
                         <image href={rol.displayIcon} className="w-full h-full  object-contain "/>
                     </svg>
@@ -18,12 +22,13 @@ const ButtonImage = ({arrayButton, handlerRole, rolSelect})=>{
 
 
 
-const Filtred = ({infoButton, handerSearchOnChange, handlerRole, rolSelect})=>{
-    if (infoButton!= undefined) {
+const Filtred = ()=>{
+    const {roleCharacters} = useSelector(state => state.charactersStore)
+    if (roleCharacters != undefined) {
         return(
             <div className="container-filters">
-                <ButtonImage arrayButton={infoButton} handlerRole={handlerRole} rolSelect={rolSelect}></ButtonImage>
-                <SearchNav handerSearchOnChange={handerSearchOnChange}></SearchNav>
+                <ButtonImage />
+                <SearchNav />
             </div>
         )
     }

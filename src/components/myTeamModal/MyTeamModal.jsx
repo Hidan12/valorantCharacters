@@ -1,12 +1,15 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { removeMyTeam } from '../../store/actions/characterActions'
 import './myTeam.css'
 
-const CharacterTeam = ({character, handlerRemoveMyTeam})=>{
+const CharacterTeam = ({character})=>{
+    const dispatch = useDispatch()
     return(
         <div className='grid grid-cols-4 justify-items-center items-center'>
             <img src={character.displayIconSmall} className='w-8 h-7 object-cover'  alt="" />
             <h2 className='text-red-500 font-bold'>{character.displayName}</h2>
             <p className='text-red-500 font-bold'>{character.role ? character.role.displayName: "Unknown"}</p>
-            <button onClick={()=> handlerRemoveMyTeam(character)} className='bg-red-500 m-3 p-2'>
+            <button onClick={()=> dispatch(removeMyTeam(character))} className='bg-red-500 m-3 p-2'>
                 Remove
             </button>
         </div>
@@ -14,7 +17,8 @@ const CharacterTeam = ({character, handlerRemoveMyTeam})=>{
 }
 
 
-const MyTeamModal = ({handlerCLickMyTeam, myTeam, handlerRemoveMyTeam})=>{
+const MyTeamModal = ({handlerCLickMyTeam})=>{
+    const {myTeam} = useSelector(state => state.charactersStore)
     return(
         <div className='container-my-team w-[80vw]'>
             <div className='my-team w-full'>
@@ -34,7 +38,7 @@ const MyTeamModal = ({handlerCLickMyTeam, myTeam, handlerRemoveMyTeam})=>{
                         <p className='font-bold text-red-500'>remove Team</p>
                     </div>
                     <div className='overflow-y-auto h-[45vh] md:h-[70vh]'>
-                        {myTeam.length > 0 ? myTeam.map((team, index) => (<CharacterTeam key={index} character={team} handlerRemoveMyTeam={handlerRemoveMyTeam}/>)) : 
+                        {myTeam.length > 0 ? myTeam.map((team, index) => (<CharacterTeam key={index} character={team}/>)) : 
                         <p className='font-bold text-red-500 text-center text-2xl'>There are no saved characters</p>
                         }
                     </div>

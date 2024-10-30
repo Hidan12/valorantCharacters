@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import './styleCard.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeMyTeam, addMyTeam } from '../../store/actions/characterActions';
 
-const Card = ({infoCard, handerDetail, clickDetail, handlerAddMyTeam, handlerRemoveMyTeam, handlerMaxTeam, maxTeam, myTeam})=>{        
+const Card = ({infoCard, handerDetail, clickDetail})=>{   
+  const {myTeam} = useSelector(state => state.charactersStore)
   const [button, setButton] = useState(myTeam.some(team => team.displayName == infoCard.displayName))
   
+  const dispatch = useDispatch()
+
   useEffect(()=>{
     setButton(tmp => tmp = myTeam.some(team => team.displayName == infoCard.displayName))
   },[myTeam])
@@ -26,14 +31,14 @@ const Card = ({infoCard, handerDetail, clickDetail, handlerAddMyTeam, handlerRem
             <p className='font-bold text-red-500'>Role: <span className='font-bold text-red-600'>{infoCard.role ? infoCard.role.displayName: "unknown"}</span></p>
             
             { button ? 
-              <button onClick={()=>handlerRemoveMyTeam(infoCard)} className='flex w-full items-center overflow-x-hidden'>
+              <button onClick={()=>dispatch(removeMyTeam(infoCard))} className='flex w-full items-center overflow-x-hidden'>
               <div className='bottom-add-remove md:group-hover:animate-moveright'>
                 <p className='font-bold text-sm'>Remove to team</p>
               </div>
             </button>
             :
-            <button onClick={()=>handlerAddMyTeam(infoCard)} className='flex w-full items-center overflow-x-hidden'>
-            <div className=' bottom-add-remove md:group-hover:animate-moveright'>
+            <button onClick={()=>dispatch(addMyTeam(infoCard))} className='flex w-full items-center overflow-x-hidden'>
+            <div className=' bottom-add-remove animate-moveright'>
               <p className='font-bold'>Add to team</p>
             </div>
           </button>  
